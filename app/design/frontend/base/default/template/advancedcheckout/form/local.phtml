@@ -29,9 +29,9 @@
                         <td style="text-align:right;"><label for="billing:comment">Коментарий</label></td>
                         <td style="padding-left: 12px;"><input title="Коментарий" name="local[comment]" id="billing:comment" value="<?= $this->getComment() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
                     </tr>
-                    <?php if (Mage::helper('advancedcheckout')->confExpressEnabled()): ?>
+                    <?php if (Mage::helper('fastcheckout')->confExpressEnabled()): ?>
                     <tr>
-                        <td colspan="2" align="right"><label for="billing:express">Экспресс доставка (+<?= Mage::helper('advancedcheckout')->confExpressPrice()?> руб) </label><input id="billing:express" type="checkbox" name="local[express]" value="ON" /></td>
+                        <td colspan="2" align="right"><label for="billing:express">Экспресс доставка (+<?= Mage::helper('fastcheckout')->confExpressPrice()?> руб) </label><input id="billing:express" type="checkbox" name="local[express]" value="ON" /></td>
                     </tr>
                     <?php endif; ?>
 
@@ -40,7 +40,7 @@
         </tr>
     </table>
     <?php echo $this->getParentBlock()->getPaymentFormHtml(); ?>
-    <input type="hidden" name="billing[locate]" value="<?=WP_Advancedcheckout_Block_Oneclick_Form::TYPE_LOCAL?>" />
+    <input type="hidden" name="billing[locate]" value="<?=Riversy_Fastcheckout_Block_Oneclick_Form::TYPE_LOCAL?>" />
 
     
     <ul style="list-style-type:disc;margin:20px 0px 0px 15px;">

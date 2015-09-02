@@ -71,7 +71,7 @@
         КПП: 770401001<br />
         Назначение платежа: Оплата услуг<br />
     </div> -->
-    <input type="hidden" name="billing[locate]" value="<?=WP_Advancedcheckout_Block_Oneclick_Form::TYPE_OTHER?>" />
+    <input type="hidden" name="billing[locate]" value="<?=Riversy_Fastcheckout_Block_Oneclick_Form::TYPE_OTHER?>" />
     <script type="text/javascript">
     //<![CDATA[
     function saveData()
@@ -86,7 +86,7 @@
     function sendData(req)
     {
         var ajaxReqParam  = 'data/' + encodeURIComponent(req) + '/';
-        var ajaxBlockUrl = '<?= $this->getUrl('advancedcheckout/cart/ajaxBlock') ?>' + ajaxReqParam;
+        var ajaxBlockUrl = '<?= $this->getUrl('fastcheckout/cart/ajaxBlock') ?>' + ajaxReqParam;
         // notice the use of a proxy to circumvent the Same Origin Policy.
 
         new Ajax.Request(ajaxBlockUrl, {

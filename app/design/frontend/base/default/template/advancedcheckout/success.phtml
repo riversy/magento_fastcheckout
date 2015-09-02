@@ -35,7 +35,7 @@
   <?php  else :?>
   <?php echo $this->__('Your order # is: %s', $this->getOrderId()) ?>.<br/>
   <?php endif;?>  
-  <?php if (Mage::helper('advancedcheckout')->getHasEmail()): ?>
+  <?php if (Mage::helper('fastcheckout')->getHasEmail()): ?>
     <?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?><br/>
   <?php endif; ?>
     <?php if ($this->canPrint()) :?>
