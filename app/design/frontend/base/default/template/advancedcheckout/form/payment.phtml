@@ -1,0 +1,27 @@
+ <?php if ($this->getEnabled()): ?>
+
+                <div class="acheckout">
+                    <div class="payment-label">
+                        <label for="checkout::payment"><?php echo $this->getPaymentLabel(); ?></label>
+                    </div>
+                    <div class="payment">
+                        <ul>
+                            <li>
+                                <label for="payment::<?php echo $this->getPlace(); ?>::checkmo"><?php echo $this->getCheckMoLabel(); ?></label>
+                                <input class="radio validate-one-required-by-name" type="radio" id="payment::<?php echo $this->getPlace(); ?>::checkmo" name="<?php echo $this->getPlace(); ?>[payment]" value="checkmo" checked />
+                            </li>
+                            <li>
+                                <label for="payment::<?php echo $this->getPlace(); ?>::card"><?php echo $this->getCardLabel(); ?></label>
+                                <input class="radio validate-one-required-by-name" type="radio" id="payment::<?php echo $this->getPlace(); ?>::card" name="<?php echo $this->getPlace(); ?>[payment]" value="card"  />
+                                <div class="clear"></div>
+                                <?php if ($this->getCardDescription()): ?>
+                                <div class="payment_description">
+                                    <?php echo $this->getCardDescription(); ?>
+                                </div>
+                                <?php endif; ?>
+                            </li>
+                        </ul>
+
+                    </div>    
+               </div>
+<?php endif; ?>

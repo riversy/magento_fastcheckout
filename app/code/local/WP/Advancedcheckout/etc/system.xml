@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <advancedcheckout translate="label" module="advancedcheckout">
+            <label>Advanced Checkout</label>
+            <sort_order>303</sort_order>
+        </advancedcheckout>
+    </tabs>
+    <sections>
+        <advancedcheckout translate="label" module="advancedcheckout">
+            <label>Options</label>
+            <tab>advancedcheckout</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <options translate="label" module="advancedcheckout">
+                    <label>Options</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <min_price translate="label">
+                            <label>Minimum Tax Price</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <comment>В основной валюте</comment>
+                        </min_price>
+                        <tax translate="label">
+                            <label>Tax</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <comment>В основной валюте</comment>
+                        </tax>
+                        <express_enable translate="label">
+                            <label>Разрешить экспресс доставку</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                        </express_enable>
+                        <express_price translate="label">
+                            <label>Стоимость экспресс доставки</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <comment>В основной валюте</comment>
+                        </express_price>
+                    </fields>
+                </options>
+                <payment translate="label" module="advancedcheckout">
+                    <label>Payment Options</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>20</sort_order>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                        </enabled>
+                        <payment_label translate="label">
+                            <label>Payment Label</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                        </payment_label>
+                        <checkmo_label translate="label">
+                            <label>CheckMo Label</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                        </checkmo_label>
+                        <card_label translate="label">
+                            <label>Card Label</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                        </card_label>
+                        <card_description translate="label">
+                            <label>Card Description</label>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                        </card_description>
+						<sender translate="label">
+							<label>Sender</label>
+							<comment>This will be used as "From"</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_identity</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sender>
+						<receiver translate="label">
+							<label>Receiver of copies</label>
+							<frontend_type>text</frontend_type>
+                            <comment>This will be used as "To" in the copy email</comment>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</receiver>
+						<email_template translate="label">
+							<label>Customen notification template</label>
+							<comment>This email template will be used to sent link to payment gate for customer</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_template</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</email_template>
+						<invoice_email_template translate="label">
+							<label>Admin notification about invoice template</label>
+							<comment>This email template will be used to sent link to payment gate for customer</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_template</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</invoice_email_template>
+                    </fields>
+                </payment>
+            </groups>
+        </advancedcheckout>
+    </sections>
+</config>

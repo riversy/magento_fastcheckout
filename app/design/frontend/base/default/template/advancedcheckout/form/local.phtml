@@ -1,0 +1,54 @@
+    <p>Для оформления Вам достаточно заполнить имя, телефон и е-мейл и наш оператор перезвонит Вам в ближайшее время.</p>
+    <table style="width: 100%; margin-top: 21px;">
+        <tr>
+            <td style="width: 50%;">
+                <table cellpadding="2px" cellspacing="7px">
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:name">Имя<span class="required">*</span></label></td>
+                        <td style="padding-left: 12px;"><input title="Имя" name="local[name]" id="billing:name" value="<?= $this->getName() ?>" class="required-entry input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:phone">Телефон<span class="required">*</span></label></td>
+                        <td style="padding-left: 12px;"><input title="Имя" name="local[phone]" id="billing:phone" value="<?= $this->getPhone() ?>" class="required-entry input-text validate-phoneCheckout" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:email">E-мейл</label><span class="required">*</span></td>
+                        <td style="padding-left: 12px;"><input title="E-майл" name="local[email]" id="billing:email" value="<?= $this->getEmail() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    
+                </table>
+            </td>
+            <td style="width: 50%;">
+                <table cellpadding="2px" cellspacing="7px">
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:street">Адрес доставки</label></td>
+                        <td style="padding-left: 12px;"><input title="Адрес доставки" name="local[street]" id="billing:street" value="<?= $this->getStreet() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:comment">Коментарий</label></td>
+                        <td style="padding-left: 12px;"><input title="Коментарий" name="local[comment]" id="billing:comment" value="<?= $this->getComment() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    <?php if (Mage::helper('advancedcheckout')->confExpressEnabled()): ?>
+                    <tr>
+                        <td colspan="2" align="right"><label for="billing:express">Экспресс доставка (+<?= Mage::helper('advancedcheckout')->confExpressPrice()?> руб) </label><input id="billing:express" type="checkbox" name="local[express]" value="ON" /></td>
+                    </tr>
+                    <?php endif; ?>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+    <?php echo $this->getParentBlock()->getPaymentFormHtml(); ?>
+    <input type="hidden" name="billing[locate]" value="<?=WP_Advancedcheckout_Block_Oneclick_Form::TYPE_LOCAL?>" />
+
+    
+    <ul style="list-style-type:disc;margin:20px 0px 0px 15px;">
+        <li>Оплата производится наличными курьеру при получении заказа</li>
+        <?php if ($this->showNotification()) { ?>
+        <li>Поскольку сумма Вашего заказа менее <?= $this->getMinSubtotal() ?> руб., минимальная стоимость доставки: <?= $this->getShippingCost() ?> руб.</li>
+      	<?php } else { ?>
+      	<li>Поскольку сумма Вашего заказа более <?= $this->getMinSubtotal() ?> руб., доставки в пределах МКАД - бесплатна</li>
+        <?php } ?>
+        <li>Доставка за МКАД оплачивается дополнительно</li>
+    </ul>

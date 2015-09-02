@@ -1,0 +1,100 @@
+    <p>Пожалуйста заполните форму, указав телефон, почтовый адрес и е-мейл, и наш оператор перезвонит Вам в ближайшее время.</p>
+    <table style="width: 100%; margin-top: 21px;">
+        <tr>
+            <td style="width: 50%;">
+                <table cellpadding="2px" cellspacing="7px">
+                    <tr>
+                        <td style="text-align:right;"><label for="other:name">Имя<span class="required">*</span></label></td>
+                        <td style="padding-left: 12px;"><input title="Имя" name="other[name]" id="other:name" value="<?= $this->getName() ?>" class="required-entry input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:phone">Телефон<span class="required">*</span></label></td>
+                        <td style="padding-left: 12px;"><input title="Имя" name="other[phone]" id="billing:phone" value="<?= $this->getPhone() ?>" class="required-entry input-text validate-phoneCheckout" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:email">E-мейл</label><span class="required">*</span></td>
+                        <td style="padding-left: 12px;"><input title="E-майл" name="other[email]" id="billing:email" value="<?= $this->getEmail() ?>" class="required-entry input-text validate-email" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;"><label for="billing:comment">Коментарий</label></td>
+                        <td style="padding-left: 12px;"><input title="Коментарий" name="other[comment]" id="billing:comment" value="<?= $this->getComment() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    
+                </table>
+            </td>
+            <td style="width: 50%;">
+                <table cellpadding="2px" cellspacing="7px">
+                    <tr>                    
+                        <td style="text-align:right;"><label for="other:country">Страна</label><span class="required">*</span></td>
+                        <td style="padding-left: 12px;">
+                        <select name="other[country_id]" id="other:country_id" class="validate-select validation-passed" title="Страна" style="width: 12em;">
+                        <?php foreach ($this->getCountryOptions() as $option): ?>
+                            <option value="<?= $option['value'] ?>"<?php if ($option['value'] === $this->getCountryId()): ?> selected<?php endif; ?>><?= $option ['label'] ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;"><label for="other:city">Город</label><span class="required">*</span></td>
+                        <td style="padding-left: 12px;"><input title="Город" name="other[city]" id="other:city" value="<?= $this->getCity() ?>" class="required-entry input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>
+                    </tr>                      
+                        <td style="text-align:right;"><label for="billing:zip">Индекс</label><span class="required">*</span></td>
+                        <td style="padding-left: 12px;"><input title="Индекс" name="other[zip]" id="billing:zip" value="<?= $this->getZip() ?>" class="required-entry input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>                      
+                    <tr>
+                        <td style="text-align:right;"><label for="other:street">Адрес</label><span class="required">*</span></td>
+                        <td style="padding-left: 12px;"><input title="Адрес" name="other[street]" id="other:street" value="<?= $this->getStreet() ?>" class="required-entry input-text" onchange="" type="text" style="width: 12em;"></td>
+                    </tr>                  
+                </table>
+            </td>
+        </tr>
+    </table>
+    <?php echo $this->getParentBlock()->getPaymentFormHtml('other'); ?>
+    <ul style="list-style-type:disc;margin:20px 0px 0px 15px;">
+        <li>Учтите, что итоговая сумма не включает стоимость почтовых услуг</li>
+        <li>Мы рассчитаем стоимость доставки и пришлем заполненную квитацию Сберкассы по е-мейл </li>
+        <li>Заказ будет выслан по почте сразу после подтверждения факта оплаты</li>
+    </ul>
+		<br>
+		<p>
+    <a title="Пример заполненой квитанции" href="<?=$this->getOrderLink() ?>" onclick="saveData();" target="_blank" style="margin-top: 5px;">Пример заполненой квитанции</a>
+  	</p>
+<!--    <h4 style="color: #666; margin-top:21px;">Наши банковские реквизиты</h4>
+    <div style="margin-top: 5px; margin-bottom: 21px;">
+        Название банка: Сбербанк России ОАО Вернадское ОСБ №7970/1675 г.Москва<br />
+        Расчетный счет: 4070281083810136186<br />
+        БИК: 044525225<br />
+        Кор./счет: 30101810400000000225<br />
+        ИНН: 7704646643<br />
+        Получатель: ООО "Добрый дом"<br />
+        КПП: 770401001<br />
+        Назначение платежа: Оплата услуг<br />
+    </div> -->
+    <input type="hidden" name="billing[locate]" value="<?=WP_Advancedcheckout_Block_Oneclick_Form::TYPE_OTHER?>" />
+    <script type="text/javascript">
+    //<![CDATA[
+    function saveData()
+    {
+        var req = myVal("other:name") + ', ' + document.getElementById("other:country_id").options[document.getElementById("other:country_id").selectedIndex].text + ', \u0433.' + myVal("other:city") + ', ' + myVal("other:street");
+        return sendData(req);        
+    }
+    function myVal(id)
+    {
+        return document.getElementById(id).value;
+    }
+    function sendData(req)
+    {
+        var ajaxReqParam  = 'data/' + encodeURIComponent(req) + '/';
+        var ajaxBlockUrl = '<?= $this->getUrl('advancedcheckout/cart/ajaxBlock') ?>' + ajaxReqParam;
+        // notice the use of a proxy to circumvent the Same Origin Policy.
+
+        new Ajax.Request(ajaxBlockUrl, {
+          method: 'get',
+          onSuccess: function(transport) {
+                return true;
+          }
+        });
+    }
+    //]]>
+    </script>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>advancedcheckout/validation.js</script></action>
+        </reference>
+    </default>
+    <advancedcheckout_cart_index>
+        <remove name="right"/>
+        <remove name="left"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="advancedcheckout/cart" name="checkout.cart">
+                <action method="setCartTemplate"><value>advancedcheckout/cart.phtml</value></action>
+                <action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
+                <action method="chooseTemplate"/>
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/item/default.phtml</template></action>
+                <block type="core/text_list" name="checkout.cart.top_methods" as="top_methods">
+                    <block type="advancedcheckout/onepage_link" name="checkout.cart.methods.onepage" template="advancedcheckout/onepage/link.phtml"/>
+                </block>
+                <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
+                <block type="checkout/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+                <block type="checkout/cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml"/>
+                <block type="advancedcheckout/cart_totals" name="advancedcheckout.cart.totals" as="wp_totals" template="advancedcheckout/cart/totals.phtml"/>
+            </block>
+        </reference>
+    </advancedcheckout_cart_index>
+    <checkout_cart_index>
+        <reference name="head">
+            <action method="addCss"><script>advancedcheckout/css/styles.css</script></action>
+        </reference>
+        <reference name="checkout.cart">
+            <action method="setTemplate"><template>advancedcheckout/cart.phtml</template></action>
+            <block type="advancedcheckout/cart_totals" name="advancedcheckout.cart.totals" as="wp_totals" template="advancedcheckout/cart/totals.phtml"/>
+        </reference>
+        <reference name="checkout.cart.methods.onepage">
+            <action method="setTemplate"><template>advancedcheckout/onepage/link.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+    <checkout_onepage_success>
+        <reference name="checkout.success">
+            <action method="setTemplate"><template>advancedcheckout/success.phtml</template></action>
+        </reference>
+    </checkout_onepage_success>
+</layout>
+

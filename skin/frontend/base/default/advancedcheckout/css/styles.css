@@ -1,0 +1,54 @@
+div.acheckout div.payment label {
+    margin-left: 0px;
+}
+
+div.acheckout input.radio {
+    float: left;
+    margin-top: 3px;
+}
+
+div.acheckout ul li {
+    position: relative;
+    margin-top: 3px;
+    height: 20px;
+}
+
+
+div.acheckout {
+    position: relative;
+    height: 80px;
+}
+
+div.acheckout div.payment {
+    left: 120px;
+    position: absolute;
+    top: 0;
+    width: 400px;
+}
+
+div.acheckout div.payment .payment_description {
+    margin-top: 10px;
+    padding-left: 18px;
+}
+
+div.right-container {
+    float: right;
+    width: 248px; 
+}
+
+div.acheckout div.payment-label {
+    left: 0;
+    padding-top: 3px;
+    position: absolute;
+    width: 120px;
+}
+
+
+div.discount-codes {
+    background: none repeat scroll 0 0 #DEE5E8;
+    border: 1px solid #BEBCB7;
+    margin-left: -2px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    width: 208px;        
+}
