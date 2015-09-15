@@ -32,7 +32,7 @@
             </fastcheckout>
             <checkout>
                 <rewrite>
-                    <onepage_link>Riversy_Fastcheckout_Block_Onepage_Link</onepage_link>
+                    <!--<onepage_link>Riversy_Fastcheckout_Block_Onepage_Link</onepage_link>-->
                     <cart>Riversy_Fastcheckout_Block_Cart</cart>
                     <cart_totals>Riversy_Fastcheckout_Block_Cart_Totals</cart_totals>
                 </rewrite>
@@ -147,7 +147,6 @@
         </routers>
     </admin>    
     <adminhtml>
-       
         <translate>
             <modules>
                 <Riversy_Fastcheckout>

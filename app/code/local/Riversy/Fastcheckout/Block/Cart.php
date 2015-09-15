@@ -2,12 +2,6 @@
 class Riversy_Fastcheckout_Block_Cart extends Mage_Checkout_Block_Cart
 {
     protected $_block = null;
-    
-    public function __construct()
-    {
-        parent::__construct();
-        
-    }
 
     protected function _toHtml()
     {     
@@ -30,20 +24,6 @@ class Riversy_Fastcheckout_Block_Cart extends Mage_Checkout_Block_Cart
             $total = $total + Mage::helper('fastcheckout')->confTax();
         }
 
-//        $obj = new Mage_Sales_Model_Quote_Address_Total();
-//        $obj->setCode('subtotal');
-//        $obj->setTitle('Предварительная сумма');
-//        $obj->setValue( $subtotal );
-//        $obj->setArea('other_body');
-//        $totals['other_subtotal'] = $obj;
-
-//        $obj = new Mage_Sales_Model_Quote_Address_Total();
-//        $obj->setCode('other_shipping');
-//        $obj->setTitle('Доствака');
-//        $obj->setValue( 'расчитывается отдельно' );
-//        $obj->setArea('other_body');
-//        $totals['other_shipping'] = $obj;
-        
         $obj = Mage::getModel('sales/quote_address_total');
         $obj->setCode('other_total');
         $obj->setTitle('Итоговая сумма:');
@@ -69,8 +49,7 @@ class Riversy_Fastcheckout_Block_Cart extends Mage_Checkout_Block_Cart
 
     public function getDefaultLocation()
     {
-        if ( $location = Mage::helper('fastcheckout')->getLocation()  )
-        {
+        if ( $location = Mage::helper('fastcheckout')->getLocation()  ){
             return $location;
         }
         return Riversy_Fastcheckout_Block_Oneclick_Form::TYPE_LOCAL;

@@ -7,10 +7,10 @@
         </reference>
         <reference name="checkout.cart">
             <action method="setTemplate"><template>fastcheckout/cart.phtml</template></action>
-            <block type="fastcheckout/cart_totals" name="fastcheckout.cart.totals" as="wp_totals" template="fastcheckout/cart/totals.phtml"/>
+            <block type="fastcheckout/cart_totals" name="fastcheckout.cart.totals" as="fastcheckout_totals" template="fastcheckout/cart/totals.phtml"/>
         </reference>
         <reference name="checkout.cart.methods.onepage">
-            <action method="setTemplate"><template>fastcheckout/onepage/link.phtml</template></action>
+            <!--<action method="setTemplate"><template>fastcheckout/onepage/link.phtml</template></action>-->
         </reference>
     </checkout_cart_index>
     <checkout_onepage_success>

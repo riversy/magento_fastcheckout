@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
- * @category   design_default
- * @package    Mage
- * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
- * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 <?php
@@ -29,41 +29,16 @@
  * Shopping cart totals template
  *
  * @see Mage_Checkout_Block_Cart_Totals
+ * @var $this Mage_Checkout_Block_Cart_Totals
  */
 ?>
-<div id="local_totals" style="display:block;">
-<table cellspacing="0" id="shopping-cart-totals-table">
+<table id="shopping-cart-totals-table">
+    <col />
+    <col width="1" />
     <tfoot>
-        <?php echo $this->renderTotals('footer'); ?>
+    <?php echo $this->renderTotals('footer'); ?>
     </tfoot>
     <tbody>
-        <?php echo $this->renderTotals(); ?>
+    <?php echo $this->renderTotals(); ?>
     </tbody>
 </table>
-</div>
-<div id="other_totals" style="display:block;">
-<table cellspacing="0" id="shopping-cart-totals-table">
-    <tfoot>
-        <?php echo $this->renderTotals('other_footer'); ?>
-
-
-    </tfoot>
-    <tbody>
-        <?php echo $this->renderTotals('other_body'); ?>
-              <tr>
-    <td style="" class="a-right" colspan="1">
-        Итого:</td>
-    <td style="" class="a-right">
-        <?= $this->getSubtotal() ?> руб.</td>
-
-        </tr>
-              <tr>
-    <td style="" class="a-right" colspan="1">
-        Доставка:</td>
-    <td style="" class="a-right">
-        расcчитывается отдельно </td>
-
-        </tr>
-    </tbody>
-</table>
-</div>

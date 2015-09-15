@@ -1,4 +1,5 @@
 <?php
+
 class Riversy_Fastcheckout_Block_Order extends Mage_Core_Block_Template
 {
     public function __construct()
@@ -7,7 +8,7 @@ class Riversy_Fastcheckout_Block_Order extends Mage_Core_Block_Template
     }
 
     protected function _prepareLayout()
-    {      
+    {
         $this->setTemplate('fastcheckout/order.phtml');
         parent::_prepareLayout();
     }
@@ -19,17 +20,17 @@ class Riversy_Fastcheckout_Block_Order extends Mage_Core_Block_Template
 
     public function getDate()
     {
-        return date('d.m.Y')."г.";
+        return date('d.m.Y') . "г.";
     }
 
     public function getReq()
     {
-        if (Mage::helper('fastcheckout')->getOrderReq())
-        {
+        if (Mage::helper('fastcheckout')->getOrderReq()) {
+
             $req = Mage::helper('fastcheckout')->getOrderReq();
             $req = urldecode($req);
             return $req;
-        }        
+        }
         return '<br/>';
     }
 
