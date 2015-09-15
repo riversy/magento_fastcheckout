@@ -11,10 +11,6 @@
                 <from><![CDATA[#^/checkout/onepage#]]></from>
                 <to>/fastcheckout/onepage</to>
             </fastcheckout_onepage>
-            <fastcheckout_cart>
-                <from><![CDATA[#^/checkout/cart#]]></from>
-                <to>/fastcheckout/cart</to>
-            </fastcheckout_cart>
         </rewrite>
         <models>
             <fastcheckout>
@@ -23,14 +19,6 @@
             </fastcheckout>
             <fastcheckout_mysql4>
                 <class>Riversy_Fastcheckout_Model_Mysql4</class>
-                <entities>
-                    <payment>
-                        <table>wp_ac_payment</table>
-                    </payment>
-                    <message>
-                        <table>wp_ac_message</table>
-                    </message>
-                </entities>
             </fastcheckout_mysql4>
             <checkout>
                 <rewrite>

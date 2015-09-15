@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <checkout_cart_index>
+        <reference name="head">
+            <action method="addCss"><script>fastcheckout/css/styles.css</script></action>
+            <action method="addJs"><script>fastcheckout/validation.js</script></action>
+        </reference>
+        <reference name="checkout.cart">
+            <action method="setTemplate"><template>fastcheckout/cart.phtml</template></action>
+            <block type="fastcheckout/cart_totals" name="fastcheckout.cart.totals" as="wp_totals" template="fastcheckout/cart/totals.phtml"/>
+        </reference>
+        <reference name="checkout.cart.methods.onepage">
+            <action method="setTemplate"><template>fastcheckout/onepage/link.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+    <checkout_onepage_success>
+        <reference name="checkout.success">
+            <action method="setTemplate"><template>fastcheckout/success.phtml</template></action>
+        </reference>
+    </checkout_onepage_success>
+</layout>
+
