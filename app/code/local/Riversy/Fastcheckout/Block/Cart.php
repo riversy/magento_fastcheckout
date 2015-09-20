@@ -52,7 +52,7 @@ class Riversy_Fastcheckout_Block_Cart extends Mage_Checkout_Block_Cart
         if ( $location = Mage::helper('fastcheckout')->getLocation()  ){
             return $location;
         }
-        return Riversy_Fastcheckout_Block_Oneclick_Form::TYPE_LOCAL;
+        return Riversy_Fastcheckout_Block_Form::TYPE_LOCAL;
     }
 
     public function getCheckoutUrl()
@@ -60,10 +60,10 @@ class Riversy_Fastcheckout_Block_Cart extends Mage_Checkout_Block_Cart
         return $this->getUrl('checkout/onepage/oneclickCheckout', array('_secure'=>true));
     }
 
-    public function getFormHtml($location = Riversy_Fastcheckout_Block_Oneclick_Form::TEMPLATE_LOCAL)
+    public function getFormHtml($location = Riversy_Fastcheckout_Block_Form::TEMPLATE_LOCAL)
     {
         $block = $this->getLayout()
-                    ->createBlock('fastcheckout/oneclick_form')
+                    ->createBlock('fastcheckout/form')
                     ->setLocation($location)
                     ->setParentBlock($this)
                     ;
@@ -87,16 +87,6 @@ class Riversy_Fastcheckout_Block_Cart extends Mage_Checkout_Block_Cart
         return $this->getQuote()->getTotals();
     }
 
-    public function getPaymentFormHtml($location = Riversy_Fastcheckout_Block_Oneclick_Form::TYPE_LOCAL)
-    {
-        $block = $this->getLayout()->createBlock('fastcheckout/oneclick_payment')->setParentBlock($this);
-        if ($block){
-            $this->_block = $block;
-
-        }
-        $this->_block->setPlace($location);
-        return $this->_block->toHtml();
-    }
 }
 
 
