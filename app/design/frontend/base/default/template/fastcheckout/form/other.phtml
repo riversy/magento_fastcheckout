@@ -1,92 +1,131 @@
 <p>Пожалуйста заполните форму, указав телефон, почтовый адрес и е-мейл, и наш оператор перезвонит Вам в ближайшее
     время.</p>
-<table style="width: 100%; margin-top: 21px;">
-    <tr>
-        <td style="width: 50%;">
-            <table cellpadding="2px" cellspacing="7px">
-                <tr>
-                    <td style="text-align:right;"><label for="other:name">Имя<span class="required">*</span></label>
-                    </td>
-                    <td style="padding-left: 12px;"><input title="Имя" name="other[name]" id="other:name"
-                                                           value="<?php echo  $this->getName() ?>"
-                                                           class="required-entry input-text" onchange="" type="text"
-                                                           style="width: 12em;"></td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;"><label for="billing:phone">Телефон<span
-                                class="required">*</span></label></td>
-                    <td style="padding-left: 12px;"><input title="Имя" name="other[phone]" id="billing:phone"
-                                                           value="<?php echo  $this->getPhone() ?>"
-                                                           class="required-entry input-text validate-phoneCheckout"
-                                                           onchange="" type="text" style="width: 12em;"></td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;"><label for="billing:email">E-мейл</label><span
-                            class="required">*</span></td>
-                    <td style="padding-left: 12px;"><input title="E-майл" name="other[email]" id="billing:email"
-                                                           value="<?php echo  $this->getEmail() ?>"
-                                                           class="required-entry input-text validate-email" onchange=""
-                                                           type="text" style="width: 12em;"></td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;"><label for="billing:comment">Коментарий</label></td>
-                    <td style="padding-left: 12px;"><input title="Коментарий" name="other[comment]" id="billing:comment"
-                                                           value="<?php echo  $this->getComment() ?>" class="input-text"
-                                                           onchange="" type="text" style="width: 12em;"></td>
-                </tr>
 
-            </table>
-        </td>
-        <td style="width: 50%;">
-            <table cellpadding="2px" cellspacing="7px">
-                <tr>
-                    <td style="text-align:right;"><label for="other:country">Страна</label><span
-                            class="required">*</span></td>
-                    <td style="padding-left: 12px;">
-                        <select name="other[country_id]" id="other:country_id" class="validate-select validation-passed"
-                                title="Страна" style="width: 12em;">
-                            <?php foreach ($this->getCountryOptions() as $option): ?>
-                                <option
-                                    value="<?php echo  $option['value'] ?>"<?php if ($option['value'] === $this->getCountryId()): ?> selected<?php endif; ?>><?php echo  $option ['label'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;"><label for="other:city">Город</label><span class="required">*</span>
-                    </td>
-                    <td style="padding-left: 12px;"><input title="Город" name="other[city]" id="other:city"
-                                                           value="<?php echo  $this->getCity() ?>"
-                                                           class="required-entry input-text" onchange="" type="text"
-                                                           style="width: 12em;"></td>
-                </tr>
-                </tr>
-                <td style="text-align:right;"><label for="billing:zip">Индекс</label><span class="required">*</span>
-                </td>
-                <td style="padding-left: 12px;"><input title="Индекс" name="other[zip]" id="billing:zip"
-                                                       value="<?php echo  $this->getZip() ?>" class="required-entry input-text"
-                                                       onchange="" type="text" style="width: 12em;"></td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;"><label for="other:street">Адрес</label><span class="required">*</span>
-                    </td>
-                    <td style="padding-left: 12px;"><input title="Адрес" name="other[street]" id="other:street"
-                                                           value="<?php echo  $this->getStreet() ?>"
-                                                           class="required-entry input-text" onchange="" type="text"
-                                                           style="width: 12em;"></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <ul class="form-list">
+            <li>
+                <label for="other:name" class="required">Имя <em>*</em></label>
+                <div class="input-box">
+
+                    <input title="Имя" name="other[name]" id="other:name"
+                           value="<?php echo  $this->getName() ?>"
+                           class="required-entry input-text"
+                           type="text">
+                </div>
+            </li>
+            <li>
+                <label for="billing:phone" class="required">Телефон <em>*</em></label>
+                <div class="input-box">
+
+                    <input title="Имя"
+                           name="other[phone]"
+                           id="billing:phone"
+                           value="<?php echo  $this->getPhone() ?>"
+                           class="required-entry input-text validate-phoneCheckout"
+                           type="text">
+                </div>
+            </li>
+            <li>
+                <label for="billing:email" class="required">E-мейл <em>*</em></label>
+                <div class="input-box">
+
+                    <input title="E-майл"
+                           name="other[email]"
+                           id="billing:email"
+                           value="<?php echo  $this->getEmail() ?>"
+                           class="required-entry input-text validate-email" onchange=""
+                           type="text">
+                </div>
+            </li>
+            <li>
+                <label for="billing:comment">Коментарий</label>
+                <div class="input-box">
+
+                    <input title="Коментарий"
+                           name="other[comment]"
+                           id="billing:comment"
+                           value="<?php echo  $this->getComment() ?>"
+                           class="input-text"
+                           type="text">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+
+        <ul class="form-list">
+            <li>
+                <label for="other:country" class="required">Страна <em>*</em></label>
+                <div class="input-box">
+
+                    <select name="other[country_id]"
+                            id="other:country_id"
+                            class="form-control validate-select validation-passed"
+                            title="Страна">
+                        <?php foreach ($this->getCountryOptions() as $option): ?>
+                            <option
+                                value="<?php echo  $option['value'] ?>"<?php if ($option['value'] === $this->getCountryId()): ?> selected<?php endif; ?>><?php echo  $option ['label'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+            </li>
+            <li>
+                <label for="other:city" class="required">Город <em>*</em></label>
+                <div class="input-box">
+
+                    <input title="Город"
+                           name="other[city]"
+                           id="other:city"
+                           value="<?php echo  $this->getCity() ?>"
+                           class="required-entry input-text"
+                           type="text">
+                </div>
+            </li>
+
+            <li>
+                <label for="billing:zip" class="required">Индекс <em>*</em></label>
+                <div class="input-box">
+
+                    <input title="Индекс"
+                           name="other[zip]"
+                           id="billing:zip"
+                           value="<?php echo  $this->getZip() ?>"
+                           class="required-entry input-text"
+                           type="text">
+                </div>
+            </li>
+
+            <li>
+                <label for="other:street" class="required">Адрес <em>*</em></label>
+                <div class="input-box">
+
+                    <input title="Адрес"
+                           name="other[street]"
+                           id="other:street"
+                           value="<?php echo  $this->getStreet() ?>"
+                           class="required-entry input-text"
+                           type="text">
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+</div>
 <?php echo $this->getParentBlock()->getPaymentFormHtml('other'); ?>
-<ul style="list-style-type:disc;margin:20px 0px 0px 15px;">
+<ul style="list-style-type:disc;margin:20px 0 0 0;">
     <li>Учтите, что итоговая сумма не включает стоимость почтовых услуг</li>
     <li>Мы рассчитаем стоимость доставки и пришлем заполненную квитацию Сберкассы по е-мейл</li>
     <li>Заказ будет выслан по почте сразу после подтверждения факта оплаты</li>
 </ul>
 <br>
-<p>
+<p style="list-style-type:disc;margin:10px 0 10px 0;">
     <a title="Пример заполненой квитанции" href="<?php echo  $this->getOrderLink() ?>" onclick="saveData();" target="_blank"
        style="margin-top: 5px;">Пример заполненой квитанции</a>
 </p>

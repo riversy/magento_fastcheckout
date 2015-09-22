@@ -1,0 +1,15 @@
+.fast-checkout.cart .type-selector {
+  margin-top: 40px;
+  margin-left: 21px;
+  margin-right: 21px;
+}
+.fast-checkout.cart .type-selector .optradio {
+  height: 28px;
+}
+.fast-checkout.cart label.checkbox-inline.express input[type="checkbox"] {
+  height: 26px;
+}
+.fast-checkout.cart select.form-control,
+.fast-checkout.cart input.input-text {
+  width: 90%;
+}

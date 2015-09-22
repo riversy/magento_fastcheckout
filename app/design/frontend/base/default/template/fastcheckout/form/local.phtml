@@ -1,49 +1,93 @@
     <p>Для оформления Вам достаточно заполнить имя, телефон и е-мейл и наш оператор перезвонит Вам в ближайшее время.</p>
-    <table style="width: 100%; margin-top: 21px;">
-        <tr>
-            <td style="width: 50%;">
-                <table cellpadding="2px" cellspacing="7px">
-                    <tr>
-                        <td style="text-align:right;"><label for="billing:name">Имя<span class="required">*</span></label></td>
-                        <td style="padding-left: 12px;"><input title="Имя" name="local[name]" id="billing:name" value="<?php echo  $this->getName() ?>" class="required-entry input-text" onchange="" type="text" style="width: 12em;"></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:right;"><label for="billing:phone">Телефон<span class="required">*</span></label></td>
-                        <td style="padding-left: 12px;"><input title="Имя" name="local[phone]" id="billing:phone" value="<?php echo  $this->getPhone() ?>" class="required-entry input-text validate-phoneCheckout" onchange="" type="text" style="width: 12em;"></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:right;"><label for="billing:email">E-мейл</label><span class="required">*</span></td>
-                        <td style="padding-left: 12px;"><input title="E-майл" name="local[email]" id="billing:email" value="<?php echo  $this->getEmail() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
-                    </tr>
-                    
-                </table>
-            </td>
-            <td style="width: 50%;">
-                <table cellpadding="2px" cellspacing="7px">
-                    <tr>
-                        <td style="text-align:right;"><label for="billing:street">Адрес доставки</label></td>
-                        <td style="padding-left: 12px;"><input title="Адрес доставки" name="local[street]" id="billing:street" value="<?php echo  $this->getStreet() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
-                    </tr>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <ul class="form-list">
+                <li>
+                    <label for="billing:name" class="required">Имя <em>*</em></label>
+                    <div class="input-box">
 
-                    <tr>
-                        <td style="text-align:right;"><label for="billing:comment">Коментарий</label></td>
-                        <td style="padding-left: 12px;"><input title="Коментарий" name="local[comment]" id="billing:comment" value="<?php echo  $this->getComment() ?>" class="input-text" onchange="" type="text" style="width: 12em;"></td>
-                    </tr>
-                    <?php if (Mage::helper('fastcheckout')->confExpressEnabled()): ?>
-                    <tr>
-                        <td colspan="2" align="right"><label for="billing:express">Экспресс доставка (+<?php echo  Mage::helper('fastcheckout')->confExpressPrice()?> руб) </label><input id="billing:express" type="checkbox" name="local[express]" value="ON" /></td>
-                    </tr>
-                    <?php endif; ?>
+                        <input title="Имя"
+                               name="local[name]"
+                               id="billing:name"
+                               value="<?php echo  $this->getName() ?>"
+                               class="required-entry input-text"
+                               type="text">
+                    </div>
 
-                </table>
-            </td>
-        </tr>
-    </table>
-    <?php echo $this->getParentBlock()->getPaymentFormHtml(); ?>
+                </li>
+                <li>
+                    <label for="billing:phone" class="required">Телефон <em>*</em></label>
+                    <div class="input-box">
+
+                        <input title="Имя"
+                               name="local[phone]"
+                               id="billing:phone"
+                               value="<?php echo  $this->getPhone() ?>"
+                               class="required-entry input-text validate-phoneCheckout"
+                               type="text">
+                    </div>
+
+                </li>
+
+                <li>
+                    <label for="billing:email" class="required">E-мейл <em>*</em></label>
+                    <div class="input-box">
+
+                        <input title="E-майл"
+                               name="local[email]"
+                               id="billing:email"
+                               value="<?php echo  $this->getEmail() ?>"
+                               class="input-text"
+                               type="text">
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <ul class="form-list">
+                <li>
+                    <label for="billing:street">Адрес доставки</label>
+                    <div class="input-box">
+
+                        <input title="Адрес доставки"
+                               name="local[street]"
+                               id="billing:street"
+                               value="<?php echo  $this->getStreet() ?>"
+                               class="input-text"
+                               type="text">
+                    </div>
+                </li>
+
+                <li>
+                    <label for="billing:comment">Коментарий</label>
+                    <div class="input-box">
+
+                        <input title="Коментарий"
+                               name="local[comment]"
+                               id="billing:comment"
+                               value="<?php echo  $this->getComment() ?>"
+                               class="input-text"
+                               type="text">
+                    </div>
+                </li>
+
+                <?php if (Mage::helper('fastcheckout')->confExpressEnabled()): ?>
+                <li>
+
+                    <label for="billing:express" class="checkbox-inline express">
+                        <input id="billing:express" type="checkbox" name="local[express]" value="ON" />
+
+                        Экспресс доставка (+<?php echo  Mage::helper('fastcheckout')->confExpressPrice()?> руб)
+
+                    </label>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
     <input type="hidden" name="billing[locate]" value="<?php echo Riversy_Fastcheckout_Block_Form::TYPE_LOCAL?>" />
-
-    
-    <ul style="list-style-type:disc;margin:20px 0px 0px 15px;">
+    <ul style="list-style-type:disc; margin: 20px 0 10px 0;">
         <li>Оплата производится наличными курьеру при получении заказа</li>
         <?php if ($this->showNotification()) { ?>
         <li>Поскольку сумма Вашего заказа менее <?php echo  $this->getMinSubtotal() ?> руб., минимальная стоимость доставки: <?php echo  $this->getShippingCost() ?> руб.</li>
