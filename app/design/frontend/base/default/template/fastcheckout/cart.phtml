@@ -127,6 +127,11 @@
 
                     <div id="local_div" style="margin-top: 40px; margin-left:21px;display:<?php echo ($this->getDefaultLocation()==='local')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_LOCAL); ?></div>
                     <div id="other_div" style="margin-top: 40px; margin-left:21px;display:<?php echo ($this->getDefaultLocation()==='other')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_OTHER); ?></div>
+
+
+                    <div class="checkout-button-set">
+                        <?php echo  $this->getChildHtml('methods') ?>
+                    </div>
                 </form>
             </div>
 
@@ -149,6 +154,8 @@
 <script type="text/javascript">
     //<![CDATA[
 
+    var checkoutForm = new VarienForm('data-form');
+
     function changeLocation(location){
         if ('<?php echo Riversy_Fastcheckout_Block_Form::TYPE_LOCAL ?>' == location){
             var l_disp = 'block';
@@ -159,8 +166,8 @@
         }
         document.getElementById('local_div').style.display = l_disp;
         document.getElementById('other_div').style.display = o_disp;
-        document.getElementById('local_totals').style.display = l_disp;
-        document.getElementById('other_totals').style.display = o_disp;
+//        document.getElementById('local_totals').style.display = l_disp;
+//        document.getElementById('other_totals').style.display = o_disp;
     }
 
     changeLocation('<?php echo $this->getDefaultLocation() ?>');

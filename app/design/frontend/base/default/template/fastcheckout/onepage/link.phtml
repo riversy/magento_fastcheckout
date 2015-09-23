@@ -24,12 +24,16 @@
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php if ($this->isPossibleOnepageCheckout()):?>
-<li>
-<?php if ($this->isDisabled()):?>
-<img src="<?php echo $this->getSkinUrl('fastcheckout/images/btn_proceed_to_checkout_dis.gif');?>" alt="<?php echo Mage::helper('fastcheckout')->__('Proceed to Checkout');?>" />
-<?php else: ?>
-<a href="#" onclick="dataForm.submit(); return false;"><img src="<?php echo $this->getSkinUrl('fastcheckout/images/btn_proceed_to_checkout.gif');?>" alt="<?php echo Mage::helper('fastcheckout')->__('Proceed to Checkout');?>" /></a>
-<?php endif?>
-</li>
-<?php endif?>
+<?php if ($this->isPossibleOnepageCheckout()): ?>
+
+<button type="submit"
+        title="Оформить заказ"
+        class="button"
+        value="Оформить заказ">
+    <span>
+        <span>Оформить заказ</span>
+    </span>
+</button>
+
+
+<?php endif ?>

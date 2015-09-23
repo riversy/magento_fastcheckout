@@ -107,7 +107,6 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
     {
         if ($data = $this->getRequest()->getPost()) {
 
-
             Mage::log($this->getOnepage()->getQuote()->getItemsCount());
 
             if (!$this->getOnepage()->getQuote()->getItemsCount()) {
