@@ -1,6 +1,5 @@
 <?php
-require_once 'Mage/Checkout/controllers/CartController.php';
-class Riversy_Fastcheckout_CartController extends Mage_Checkout_CartController
+class Riversy_Fastcheckout_CartController extends Mage_Core_Controller_Front_Action
 {
 
 

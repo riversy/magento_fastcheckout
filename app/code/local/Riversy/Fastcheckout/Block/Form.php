@@ -177,7 +177,7 @@ class Riversy_Fastcheckout_Block_Form extends Mage_Core_Block_Template
 
     public function getOrderLink()
     {
-        return $this->getUrl('advancedcheckout/cart/getOrder');
+        return $this->getUrl('fastcheckout/cart/getOrder');
     }
 
     protected function _toHtml()
