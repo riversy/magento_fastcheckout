@@ -26,14 +26,19 @@
 
 class Riversy_Fastcheckout_Block_Cart_Totals extends Mage_Checkout_Block_Cart_Totals
 {
-    protected $_totalRenderers;
-    protected $_defaultRenderer = 'checkout/total_default';
-
     protected $_totals = null;
+
+    /**
+     * @return Riversy_Fastcheckout_Helper_Data
+     */
+    protected function _helper()
+    {
+        return Mage::helper('fastcheckout');
+    }
 
     public function getTotals()
     {
-        return $this->_totals = Mage::helper('fastcheckout')->getTotals();
+        return $this->_totals = $this->_helper()->getTotals();
     }
 
     public function setTotals($value)
@@ -69,31 +74,4 @@ class Riversy_Fastcheckout_Block_Cart_Totals extends Mage_Checkout_Block_Cart_To
         return $this->_totalRenderers[$code];
     }
 
-    public function renderTotal($total, $area = null, $colspan = 1)
-    {
-        $code = $total->getCode();
-        if ($total->getAs()) {
-            $code = $total->getAs();
-        }
-        return $this->_getTotalRenderer($code)
-            ->setTotal($total)
-            ->setColspan($colspan)
-            ->setRenderingArea(is_null($area) ? -1 : $area)
-            ->toHtml();
-    }
-
-    public function renderTotals($area = null, $colspan = 1)
-    {
-        $html = '';
-
-        foreach($this->getTotals() as $total) {
-            if ($total->getArea() != $area && $area != -1) {
-                continue;
-            }
-
-            $html .= $this->renderTotal($total, $area, $colspan);
-        }
-
-        return $html;
-    }
 }

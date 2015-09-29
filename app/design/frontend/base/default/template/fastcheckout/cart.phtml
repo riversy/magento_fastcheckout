@@ -1,7 +1,16 @@
 <div class="cart fast-checkout">
     <div class="page-title title-buttons">
         <h1><?php echo $this->__('Shopping Cart') ?></h1>
+
+
+        <div class="top-button-set">
+            <?php echo  $this->getChildHtml('methods') ?>
+        </div>
     </div>
+
+
+
+
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
     <div class="row no-margin">
@@ -129,9 +138,7 @@
                     <div id="other_div" style="margin-top: 40px; margin-left:21px;display:<?php echo ($this->getDefaultLocation()==='other')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_OTHER); ?></div>
 
 
-                    <div class="checkout-button-set">
-                        <?php echo  $this->getChildHtml('methods') ?>
-                    </div>
+
                 </form>
             </div>
 
@@ -139,6 +146,9 @@
                 <div class="col-totals">
                     <div class="totals">
                         <?php echo $this->getChildHtml('fastcheckout_totals'); ?>
+                    </div>
+                    <div class="checkout-button-set">
+                        <?php echo  $this->getChildHtml('methods') ?>
                     </div>
                 </div>
 
@@ -166,8 +176,8 @@
         }
         document.getElementById('local_div').style.display = l_disp;
         document.getElementById('other_div').style.display = o_disp;
-//        document.getElementById('local_totals').style.display = l_disp;
-//        document.getElementById('other_totals').style.display = o_disp;
+        document.getElementById('local_totals').style.display = l_disp;
+        document.getElementById('other_totals').style.display = o_disp;
     }
 
     changeLocation('<?php echo $this->getDefaultLocation() ?>');

@@ -26,9 +26,10 @@
 ?>
 <?php if ($this->isPossibleOnepageCheckout()): ?>
 
-<button type="submit"
+<button type="button"
         title="Оформить заказ"
-        class="button"
+        class="button checkout"
+        onclick="checkoutForm.submit()"
         value="Оформить заказ">
     <span>
         <span>Оформить заказ</span>

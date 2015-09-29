@@ -29,16 +29,59 @@
  * Shopping cart totals template
  *
  * @see Mage_Checkout_Block_Cart_Totals
- * @var $this Mage_Checkout_Block_Cart_Totals
+ * @var $this Riversy_Fastcheckout_Block_Cart_Totals
  */
 ?>
-<table id="shopping-cart-totals-table">
-    <col />
-    <col width="1" />
-    <tfoot>
-    <?php echo $this->renderTotals('footer'); ?>
-    </tfoot>
-    <tbody>
-    <?php echo $this->renderTotals(); ?>
-    </tbody>
-</table>
+
+<div id="local_totals">
+    <table id="shopping-cart-totals-table">
+        <col />
+        <col width="1" />
+        <tfoot>
+        <?php echo $this->renderTotals('footer'); ?>
+        </tfoot>
+        <tbody>
+        <?php echo $this->renderTotals(); ?>
+        </tbody>
+    </table>
+</div>
+<div id="other_totals">
+    <table>
+        <colgroup>
+            <col>
+            <col width="1">
+        </colgroup>
+
+        <tfoot>
+
+
+        <tr>
+            <td style="" class="a-right" colspan="1">
+                <strong>К оплате</strong>
+            </td>
+            <td style="" class="a-right">
+                <strong><?php echo $this->getGrandToralHtml(); ?></strong>
+            </td>
+        </tr>
+        </tfoot>
+        <tbody>
+
+            <tr>
+                <td style="" class="a-right" colspan="1">
+                    Итого:</td>
+                <td style="" class="a-right">
+                    <?= $this->getSubtotalHtml() ?></td>
+            </tr>
+
+
+            <tr>
+                <td style="" class="a-right" colspan="1">
+                    Доставка:</td>
+                <td style="" class="a-right">
+                    отдельно </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
