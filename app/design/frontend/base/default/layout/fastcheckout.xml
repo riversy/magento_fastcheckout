@@ -12,6 +12,11 @@
         <reference name="checkout.cart.methods.onepage">
             <action method="setTemplate"><template>fastcheckout/onepage/link.phtml</template></action>
         </reference>
+        <reference name="checkout.cart.coupon">
+            <action method="setTemplate">
+                <name>fastcheckout/cart/coupon.phtml</name>
+            </action>
+        </reference>
     </checkout_cart_index>
     <checkout_onepage_success>
         <reference name="checkout.success">
