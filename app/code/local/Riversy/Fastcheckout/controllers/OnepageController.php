@@ -37,10 +37,10 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
         }
     }
 
-    protected function _saveMethod($method)
+    protected function _saveCheckoutMethod($method)
     {
         if ($method) {
-            $result = $this->getOnepage()->saveCheckoutMethod($method);
+            $this->getOnepage()->saveCheckoutMethod($method);
         }
         return $this;
     }
@@ -100,14 +100,18 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
         return $result;
     }
 
-    /*
+    /**
      * Create order and put it to magento
      */
     public function oneclickCheckoutAction()
     {
         if ($data = $this->getRequest()->getPost()) {
 
-            Mage::log($this->getOnepage()->getQuote()->getItemsCount());
+//            echo "<pre>";
+//            print_r($data);
+//            echo "</pre>";
+//
+
 
             if (!$this->getOnepage()->getQuote()->getItemsCount()) {
                 $this->_redirect(self::PATH_SUCCESS);
@@ -117,26 +121,33 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
             if (!isset($data['checkout_method'])) {
                 $this->_redirect(self::PATH_FAILURE);
             }
+
             Mage::helper('fastcheckout')->setLocation($data['checkout_method']);
+
             if ($data['checkout_method'] === 'local') {
                 $data = $data['local'];
             } else {
                 $data = $data['other'];
             }
+
             Mage::helper('fastcheckout')->setFormData($data);
             # Set up method
+
             if (Mage::getSingleton('customer/session')->isLoggedIn()) {
                 $method = Mage_Sales_Model_Quote::CHECKOUT_METHOD_LOGIN_IN;
             } else {
                 $method = Mage_Sales_Model_Quote::CHECKOUT_METHOD_GUEST;
             }
-            $this->_saveMethod($method);
+
+            $this->_saveCheckoutMethod($method);
 
             # Set up address
             if ($this->getCustomer()) {
+
                 $shippmentAddress = $this->getCustomer()->getPrimaryShippingAddress();
                 $billingAddress = $this->getCustomer()->getPrimaryBillingAddress();
             }
+
             $address = array();
             if ($this->getCustomer() && ($shippmentAddress)) {
 
@@ -150,6 +161,7 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
                 if ($billingAddress) {
                     $result2 = $this->getOnepage()->saveShipping($billingAddress, $billingAddress->getId());
                 }
+
             } else {
                 $names = explode(' ', $data['name'], 2);
                 if (count($names) > 1) {
@@ -162,6 +174,8 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
 
                 Mage::helper('fastcheckout')->setFormData($data);
                 Mage::helper('fastcheckout')->setHasEmail($data['email'] ? true : false);
+
+
                 $address['email'] = $this->_getArrayVal($data, 'email');
                 $address['street'][0] = $this->_getArrayVal($data, 'street');
                 $address['street'][1] = $this->_getArrayVal($data, 'street');
@@ -173,8 +187,11 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
                 $address['fax'] = $this->_getArrayVal($data, 'phone');
                 $address['save_in_address_book'] = 1;
                 $address['use_for_shipping'] = 1;
+
                 $this->_saveAddress($address);
             }
+
+
             if (isset($data['comment']) && $data['comment']) {
                 $comment = $data['comment'];
             } else {
@@ -189,7 +206,7 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
             $local_tax = Mage::helper('fastcheckout')->confTax();
             $tax = 0;
 
-            if ($locate === Riversy_Fastcheckout_Block_Oneclick_Form::TYPE_OTHER) {
+            if ($locate === Riversy_Fastcheckout_Block_Form::TYPE_OTHER) {
                 $shipment_method = self::RUS_FREE_SHIPMENT;
                 $tax = 0;
             } else {
@@ -214,24 +231,13 @@ class Riversy_Fastcheckout_OnepageController extends Mage_Checkout_OnepageContro
             # Save order
             $result = $this->_saveOrder($comment);
 
-
-            /**
-             * Insert Payment Type
-             */
-            if ($orderId = $this->getOnepage()->getCheckout()->getLastOrderId()) {
-
-                $payment = Mage::getModel('fastcheckout/payment')->load($orderId, 'order_id');
-                if (!$payment->getId()) {
-                    $payment->setOrderId($orderId)
-                        ->setPaymentType(isset($data['payment']) ? $data['payment'] : 'checkmo')
-                        ->save();
-                }
-            }
-
             # Redirect to proper place
             if ($result['success']) {
+
                 $this->_redirect(self::PATH_SUCCESS);
+
             } else {
+
                 Mage::getSingleton('core/session')->addError($result['error_messages']);
                 $this->_redirect(self::PATH_FAILURE);
             }
