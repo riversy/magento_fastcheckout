@@ -1,5 +1,27 @@
 .fast-checkout.cart {
 
+  .title-buttons {
+    // Clearfix Trick
+    zoom: 1;
+    &:before, &:after {
+      content: "";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+
+    .top-button-set {
+      float: right;
+      margin-top: -48px;
+
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+
   .type-selector {
 
     margin-top: 40px;
@@ -16,7 +38,6 @@
     input[type="checkbox"] {
       height: 26px;
     }
-
   }
 
   .checkout-types {
@@ -24,8 +45,6 @@
   }
 
   button.button.checkout {
-
-
 
     float: none;
     margin-left: 0;

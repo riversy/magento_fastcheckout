@@ -1,3 +1,23 @@
+.fast-checkout.cart .title-buttons {
+  zoom: 1;
+}
+.fast-checkout.cart .title-buttons:before,
+.fast-checkout.cart .title-buttons:after {
+  content: "";
+  display: table;
+}
+.fast-checkout.cart .title-buttons:after {
+  clear: both;
+}
+.fast-checkout.cart .title-buttons .top-button-set {
+  float: right;
+  margin-top: -48px;
+}
+@media screen and (max-width: 767px) {
+  .fast-checkout.cart .title-buttons .top-button-set {
+    display: none;
+  }
+}
 .fast-checkout.cart .type-selector {
   margin-top: 40px;
   margin-left: 21px;
