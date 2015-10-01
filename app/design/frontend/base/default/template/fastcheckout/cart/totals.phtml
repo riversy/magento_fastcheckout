@@ -60,7 +60,7 @@
                 <strong>К оплате</strong>
             </td>
             <td style="" class="a-right">
-                <strong><?php echo $this->getGrandToralHtml(); ?></strong>
+                <strong><?php echo $this->getGrandTotalHtml(); ?></strong>
             </td>
         </tr>
         </tfoot>
@@ -68,17 +68,28 @@
 
             <tr>
                 <td style="" class="a-right" colspan="1">
-                    Итого:</td>
+                    Итого</td>
                 <td style="" class="a-right">
-                    <?= $this->getSubtotalHtml() ?></td>
+                    <?php echo $this->getSubtotalHtml() ?></td>
             </tr>
 
+            <?php if ($this->hasDiscount()): ?>
+                <tr>
+                    <td style="" class="a-right" colspan="1">
+                        Скидка</td>
+                    <td style="" class="a-right">
+                        <?php echo $this->getDiscountHtml() ?></td>
+                </tr>
+            <?php endif; ?>
 
             <tr>
                 <td style="" class="a-right" colspan="1">
-                    Доставка:</td>
+                    Доставка</td>
                 <td style="" class="a-right">
-                    отдельно </td>
+                    <span class="price">
+                        отдельно
+                    </span>
+                </td>
             </tr>
         </tbody>
     </table>

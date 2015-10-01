@@ -47,10 +47,26 @@ class Riversy_Fastcheckout_Block_Cart_Totals extends Mage_Checkout_Block_Cart_To
         return $this;
     }
 
+    protected function _formatPrice($value)
+    {
+        return Mage::helper('core')->currency($value, true, true);
+    }
+
     public function getSubtotal()
     {
         $t = $this->getTotals();
         return $t['subtotal']->getValue();
+    }
+
+    public function getGrandTotal()
+    {
+        $t = $this->getTotals();
+        return $t['grand_total']->getValue();
+    }
+
+    public function getSubtotalHtml()
+    {
+        return $this->_formatPrice($this->getSubtotal());
     }
 
     protected function _getTotalRenderer($code)
@@ -72,6 +88,28 @@ class Riversy_Fastcheckout_Block_Cart_Totals extends Mage_Checkout_Block_Cart_To
         }
 
         return $this->_totalRenderers[$code];
+    }
+
+    public function getGrandTotalHtml()
+    {
+        return $this->_formatPrice($this->getGrandTotal());
+
+    }
+
+    public function hasDiscount()
+    {
+        return !!$this->getDiscount();
+    }
+
+    public function getDiscount()
+    {
+        $t = $this->getTotals();
+        return $t['discount']->getValue();
+    }
+
+    public function getDiscountHtml()
+    {
+        return $this->_formatPrice($this->getDiscount());
     }
 
 }
