@@ -104,7 +104,11 @@ class Riversy_Fastcheckout_Block_Cart_Totals extends Mage_Checkout_Block_Cart_To
     public function getDiscount()
     {
         $t = $this->getTotals();
-        return $t['discount']->getValue();
+        if (isset($t['discount'])){
+            return $t['discount']->getValue();
+        } else {
+            return false;
+        }
     }
 
     public function getDiscountHtml()
