@@ -134,8 +134,8 @@
                         </label>
                     </div>
 
-                    <div id="local_div" style="margin-top: 40px; margin-left:21px;display:<?php echo ($this->getDefaultLocation()==='local')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_LOCAL); ?></div>
-                    <div id="other_div" style="margin-top: 40px; margin-left:21px;display:<?php echo ($this->getDefaultLocation()==='other')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_OTHER); ?></div>
+                    <div id="local_div" class="method" style="display:<?php echo ($this->getDefaultLocation()==='local')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_LOCAL); ?></div>
+                    <div id="other_div" class="method" style="display:<?php echo ($this->getDefaultLocation()==='other')?'block':'none'; ?>;"><?php echo $this->getFormHtml(Riversy_Fastcheckout_Block_Form::TYPE_OTHER); ?></div>
 
 
 
